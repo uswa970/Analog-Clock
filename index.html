@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+ body{height: 83vh;  background: #0f172a; overflow-y: hidden;}
+.clock{position: relative; height: 400px; width: 400px; border-radius: 50%; background: #38bdf8;box-shadow: 0 4px 30px #38bdf8;backdrop-filter: blur(6.2px);-webkit-backdrop-filter: blur(6.2px); margin:100px auto; animation: move 2s infinite; border: 5px solid #fff;}
+ /* @keyframes move{from{transform: rotate(360deg);}}  */
+.circle{position: absolute;height: 360px; width: 360px;  border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #fff; border: 5px solid #f6660c;}
+.circle img{height: 70px; margin-top: 70px; margin-left: 100px;}
+.circle p { position: absolute;left: 50%; font-size: 32px;margin-top: 20px; color: red;}
+.circle p:nth-child(12){font-size: 50px;top: -10px; left: 165px;}
+.circle p:nth-child(1){font-size: 50px; top: 20px; left: 265px;}
+.circle p:nth-child(2){top: 80px;font-size: 50px; left: 305px;}
+.circle p:nth-child(3){top: 155px;font-size: 50px;left: 320px;}
+.circle p:nth-child(4){top: 225px;font-size: 50px; left: 280px;}
+.circle p:nth-child(5){top: 280px; left: 225px;font-size: 50px;}
+.circle p:nth-child(6){top: 290px;left: 165px;font-size: 50px;}
+.circle p:nth-child(7){top: 270px;left: 100px; font-size: 50px;}
+.circle p:nth-child(8){top: 225px;left: 45px; font-size: 50px;}
+.circle p:nth-child(9){top: 155px;left: 15px;font-size: 50px;}
+.circle p:nth-child(10){top: 80px;left: 20px;font-size: 50px;}
+.circle p:nth-child(11){top: 10px;left: 75px;font-size: 50px;}
+ .hours{position: absolute;height: 85px;width: 9px;border-radius: 10px;background: #0f172a;left: 50%;top: 50%; transform: translate(-50%, -100%) rotate(0deg); transform-origin: bottom;}
+ .mints{ position: absolute; height: 125px; width: 7px; border-radius: 10px; background: #0f172a; left: 50%; top: 50%;transform: translate(-50%, -100%) rotate(0deg);transform-origin: bottom; }
+ .seconds{ position: absolute; height: 150px; width: 3px; border-radius: 5px; background: #ef4444; left: 50%; top: 50%; transform: translate(-50%, -100%) rotate(0deg); transform-origin: bottom; }
+ .seconds::before{ content: ''; position: absolute; height: 28px; width: 28px; left: 50%; top: 100%; transform: translate(-50%, -50%); background: #38bdf8; border: 2px solid #0284c7;border-radius: 50%; box-shadow: 0 0 10px rgba(56,189,248,0.7); }
+ h3{ margin-left: 100px; margin-top: 100px; font-size: 30px; font-weight: 550;} 
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="circle">
+            <p>1<span></span></p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+            <p>10</p>
+            <p>11</p>
+            <p>12</p>
+            <img src="./kalma.png">
+             <h3>Uswa Iqbal</h3>
+        </div>
+                 <div class="needls">
+            <div class="hours"></div>
+            <div class="mints"></div>
+            <div class="seconds"></div>
+         </div>
+    </div>
+</body>
+<script>
+    var secondhand = document.querySelector('.seconds');
+    var hourhand = document.querySelector('.hours');
+    var minutshand = document.querySelector('.mints');
+  
+  
+
+  function clock(){
+
+        var date = new Date();
+
+    var hours = date.getHours()
+    var minuts = date.getMinutes()
+    var seconds = date.getSeconds();
+
+    // second hand
+    var secondAngle = seconds*6;
+
+    secondhand.style.transform = `
+     translate(-50%, -100%)
+    rotate(${secondAngle}deg)
+
+    `
+      var mintusAngle = minuts*6*6;
+  
+ minutshand.style.transform = `
+     translate(-50%, -100%)
+    rotate(${mintusAngle}deg)
+
+    `
+  var hourAngle = hours*30;
+  
+ hourhand.style.transform = `
+     translate(-50%, -100%)
+    rotate(${hourAngle}deg)
+
+    `
+
+  }
+  clock();
+   setInterval(clock,1000);   
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- var mintusAngle = minuts*6 + seconds*0.1;
+  
+ minutshand.style.transform = `
+     translate(-50%, -100%)
+    rotate(${mintusAngle}deg)
+
+    `
+  var hourAngle = (hours % 12)*30 + minuts *0.5;
+  
+ hourhand.style.transform = `
+     translate(-50%, -100%)
+    rotate(${hourAngle}deg)
+
+    ` -->
